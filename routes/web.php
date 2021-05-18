@@ -24,6 +24,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 //Routes to books
-Route::get('/create_book', [BookController::class, 'createBook']);
+Route::get('/books', [BookController::class, 'index'])->name('books.index');
 
-Route::get('book/{name?}', [BookController::class, 'showBook']);
+Route::get('books/add', [BookController::class, 'add'])->name('books.add'); //CREATE
+
+Route::get('books/show/{id?}', [BookController::class, 'show'])->name('books.show'); //READ
