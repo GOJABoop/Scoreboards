@@ -33,3 +33,5 @@ Route::get('books/show/{book}', [BookController::class, 'show'])->name('books.sh
 Route::get('books/{book}/edit', [BookController::class, 'edit'])->name('books.edit'); //UPDATE
 
 Route::put('books/{book}', [BookController::class, 'update'])->name('books.update');
+
+Route::delete('books/{book}', [BookController::class, 'destroy'])->name('books.destroy'); //DELETE

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBook;
+use App\Http\Requests\UpdateBook;
 
 class BookController extends Controller
 {
@@ -17,17 +19,12 @@ class BookController extends Controller
         return view('books.add');
     }
 
-    public function store(Request $request){
-        $book = new Book();
-        $book->title = $request->title;
-        $book->author = $request->author;
-        $book->type = $request->type;
-        $book->save();
+    public function store(StoreBook $request){
+        $book = Book::create($request->all());
         return redirect()->route('books.show', $book);
     }
 
     public function show(Book $book){
-        //compact('book');  = ['book' => $book]
         return view('books.show', compact('book')); 
     }
 
@@ -35,11 +32,13 @@ class BookController extends Controller
         return view('books.edit', compact('book'));
     }
 
-    public function update(Request $request, Book $book){
-        $book->title = $request->title;
-        $book->author = $request->author;
-        $book->type = $request->type;
-        $book->save();
+    public function update(UpdateBook $request, Book $book){
+        $book->update($request->all());
         return redirect()->route('books.show', $book);
+    }
+
+    public function destroy(Book $book){
+        $book->delete();
+        return redirect()->route('books.index');
     }
 }
