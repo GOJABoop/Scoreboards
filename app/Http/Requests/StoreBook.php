@@ -24,6 +24,7 @@ class StoreBook extends FormRequest
     public function rules()
     {
         return [
+            //'user_id' => 'requiered',
             'title' => 'required',  //|max:10 other validation
             'author' => 'required',
             'type' => 'required'

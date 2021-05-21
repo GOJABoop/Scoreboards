@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\NoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //Routes to books (index[GET], create[GET], store[POST], show[GET], edit[GET], update[PUT], destroy[DELETE])
 Route::resource('books', BookController::class);
 
+Route::get('/notes/{book}', [NoteController::class, 'index'])->name('notes.index');
 
+Route::get('{book}/notes/create', [NoteController::class, 'create'])->name('notes.create');
 
+Route::post('notes/store', [NoteController::class, 'store'])->name('notes.store');
 
 /*Route::get('/books', [BookController::class, 'index'])->name('books.index');
 
