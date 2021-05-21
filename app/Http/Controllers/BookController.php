@@ -15,8 +15,8 @@ class BookController extends Controller
         return view('books.index',compact('books'));
     }
 
-    public function add(){
-        return view('books.add');
+    public function create(){
+        return view('books.create');
     }
 
     public function store(StoreBook $request){

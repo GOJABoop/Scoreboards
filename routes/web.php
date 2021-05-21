@@ -21,10 +21,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-//Routes to books
-Route::get('/books', [BookController::class, 'index'])->name('books.index');
+//Routes to books (index[GET], create[GET], store[POST], show[GET], edit[GET], update[PUT], destroy[DELETE])
+Route::resource('books', BookController::class);
 
-Route::get('books/add', [BookController::class, 'add'])->name('books.add'); //CREATE
+
+
+
+/*Route::get('/books', [BookController::class, 'index'])->name('books.index');
+
+Route::get('books/create', [BookController::class, 'create'])->name('books.create'); //CREATE
 
 Route::post('books/store', [BookController::class, 'store'])->name('books.store');
 
@@ -34,4 +39,4 @@ Route::get('books/{book}/edit', [BookController::class, 'edit'])->name('books.ed
 
 Route::put('books/{book}', [BookController::class, 'update'])->name('books.update');
 
-Route::delete('books/{book}', [BookController::class, 'destroy'])->name('books.destroy'); //DELETE
+Route::delete('books/{book}', [BookController::class, 'destroy'])->name('books.destroy'); //DELETE*/

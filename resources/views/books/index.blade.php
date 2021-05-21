@@ -4,7 +4,7 @@
 
 @section('content')
     <h1> Books </h1>
-    <a href="{{route('books.add')}}">Add book</a>
+    <a href="{{route('books.create')}}">Add book</a>
     <ul>
         @foreach ($books as $book)
             <li> 
