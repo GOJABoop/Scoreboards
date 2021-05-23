@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-    //protected $fillable = ['title','author','type'];
-    protected $guarded = [];
+
+    protected $guarded = []; //protected $fillable = ['title','author','type'];
 
     public function notes(){
         return $this->hasMany(Note::class);
     }
 
     /*public function user(){
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }*/
 }

@@ -25,11 +25,21 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //Routes to books (index[GET], create[GET], store[POST], show[GET], edit[GET], update[PUT], destroy[DELETE])
 Route::resource('books', BookController::class);
 
-Route::get('/notes/{book}', [NoteController::class, 'index'])->name('notes.index');
+Route::resource('notes', NoteController::class);
+
+/*Route::get('/notes/{book}', [NoteController::class, 'index'])->name('notes.index');
 
 Route::get('{book}/notes/create', [NoteController::class, 'create'])->name('notes.create');
 
 Route::post('notes/store', [NoteController::class, 'store'])->name('notes.store');
+
+Route::get('notes/show/{note}', [NoteController::class, 'show'])->name('notes.show'); //READ
+
+Route::get('notes/{note}/edit', [NoteController::class, 'edit'])->name('notes.edit'); //UPDATE
+
+Route::put('notes/{note}', [NoteController::class, 'update'])->name('notes.update');
+
+Route::delete('notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy'); //DELETE
 
 /*Route::get('/books', [BookController::class, 'index'])->name('books.index');
 

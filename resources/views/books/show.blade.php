@@ -13,8 +13,18 @@
         @method('delete')
         <button type="submit"> Delete book </button>
     </form>
-    <br>
-    <a href="{{route('notes.index',$book)}}">Go to bookmarks</a><br>
     <a href="{{route('books.edit', $book->id)}}">Edit book</a> <br>
     <a href="{{route('books.index')}}">Back to books</a> <br>
+
+    <!-- <a href="{{route('notes.index',$book)}}">Go to bookmarks</a><br> -->
+    <h3>BOOKMARKS</h3>
+    <a href="{{route('notes.create',$book)}}">Add bookmark</a>
+    <ul>
+        @foreach ($notes as $note)
+            <li> 
+                <p> <strong>Description: </strong> <a href="{{route('notes.show', $note)}}">{{$note->description}} </a>
+                <br><strong>Body: </strong>{{$note->body}}</p>
+            </li>
+        @endforeach
+    </ul>
 @endsection

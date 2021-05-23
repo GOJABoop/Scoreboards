@@ -9,7 +9,7 @@ class Note extends Model
 {
     use HasFactory;
 
-    //protected $guarded = [];
+    protected $guarded = []; //protected $fillable = ['body','description'];
 
     public function book(){
         return $this->belongsTo(Book::class);
