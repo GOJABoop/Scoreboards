@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreBook extends FormRequest
 {
@@ -24,7 +25,7 @@ class StoreBook extends FormRequest
     public function rules()
     {
         return [
-            //'user_id' => 'requiered',
+            'user_id' => Auth::id(),
             'title' => 'required',  //|max:10 other validation
             'author' => 'required',
             'type' => 'required'

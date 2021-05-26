@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreBook;
 use App\Http\Requests\UpdateBook;
 
 class BookController extends Controller
 {
     public function index(){
-        $books = Book::orderBy('id','desc')->paginate();
+        $books = Book::orderBy('id','desc')->where('user_id',"=",Auth::id())->paginate();
         return view('books.index',compact('books'));
     }
 
@@ -19,8 +20,14 @@ class BookController extends Controller
         return view('books.create');
     }
 
-    public function store(StoreBook $request){
-        $book = Book::create($request->all());
+    public function store(Request /*StoreBook*/ $request){
+        //$book = Book::create($request->all());
+        $book = new Book();
+        $book->user_id = Auth::id();
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->type = $request->type;
+        $book->save();
         return redirect()->route('books.show', $book);
     }
 
