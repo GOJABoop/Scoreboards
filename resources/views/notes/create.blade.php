@@ -4,16 +4,8 @@
 
 @section('content')
     <h1>Add new bookmark {{$book->title}}</h1>
-    <form action="{{route('notes.store')}}", method="POST">
+    <form action="{{route('notes.store',$book)}}", method="POST">
         @csrf
-
-        <label>
-            Book ID: <br><input type="text" name="book_id" value={{old('book_id')}}>
-        </label>
-        @error('description')
-            <small> *{{$message }} </small>
-        @enderror
-        
         <br>
         <label>
             Description: <br><input type="text" name="description" value="{{old('description')}}">

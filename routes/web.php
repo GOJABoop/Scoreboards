@@ -25,7 +25,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //Routes to books (index[GET], create[GET], store[POST], show[GET], edit[GET], update[PUT], destroy[DELETE])
 Route::resource('books', BookController::class);
 
-Route::resource('notes', NoteController::class);
+Route::get('/notes/create/{book}', [NoteController::class, 'create'])->name('notes.create');
+Route::post('notes/store/{book}', [NoteController::class, 'store'])->name('notes.store');
+Route::resource('notes', NoteController::class)->except(['create','store']);
+
 
 /*Route::get('/notes/{book}', [NoteController::class, 'index'])->name('notes.index');
 

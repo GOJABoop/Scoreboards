@@ -20,9 +20,14 @@ class NoteController extends Controller
         return view('notes.create',compact('book'));
     }
 
-    public function store(StoreNote $request){
-        $note = Note::create($request->all());
-        return redirect()->route('books.index');
+    public function store(/*StoreNote*/ Request $request,Book $book){
+        //$note = Note::create($request->all());
+        $note = new Note();
+        $note->book_id = $book->id;
+        $note->description = $request->description;
+        $note->body = $request->body;
+        $note->save();
+        return redirect()->route('books.show',compact('book'));
     }
 
     public function show(Note $note){
@@ -35,12 +40,14 @@ class NoteController extends Controller
 
     public function update(UpdateNote $request, Note $note){
         $note->update($request->all());
-        return redirect()->route('notes.show',$note);
+        $book = Note::find($note->id)->book;
+        return redirect()->route('books.show',compact('book'));
     }
 
     public function destroy(Note $note){
+        $book = Note::find($note->id)->book;
         $note->delete();
-        return redirect()->route('books.index');
+        return redirect()->route('books.show',compact('book'));
     }
 
 }
