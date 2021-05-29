@@ -49,5 +49,4 @@ class NoteController extends Controller
         $note->delete();
         return redirect()->route('books.show',compact('book'));
     }
-
 }

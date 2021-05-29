@@ -15,5 +15,5 @@
         <button type="submit"> Delete bookmark </button>
     </form>
     <a href="{{route('notes.edit', $note->id)}}">Edit bookmark</a> <br>
-    <a href="{{route('books.index')}}">Back to books</a> <br>
+    <a href="{{route('dashboard')}}">Back to books</a> <br>
 @endsection

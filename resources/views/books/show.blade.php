@@ -14,7 +14,7 @@
         <button type="submit"> Delete book </button>
     </form>
     <a href="{{route('books.edit', $book->id)}}">Edit book</a> <br>
-    <a href="{{route('books.index')}}">Back to books</a> <br>
+    <a href="{{route('dashboard')}}">Back to books</a> <br>
     <h3>BOOKMARKS</h3>
     <a href="{{route('notes.create',$book)}}">Add bookmark</a>
     <ul>

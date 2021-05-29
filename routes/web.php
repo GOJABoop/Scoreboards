@@ -21,39 +21,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-
-//Routes to books (index[GET], create[GET], store[POST], show[GET], edit[GET], update[PUT], destroy[DELETE])
-Route::resource('books', BookController::class);
-
-Route::get('/notes/create/{book}', [NoteController::class, 'create'])->name('notes.create');
-Route::post('notes/store/{book}', [NoteController::class, 'store'])->name('notes.store');
-Route::resource('notes', NoteController::class)->except(['create','store']);
-
-
-/*Route::get('/notes/{book}', [NoteController::class, 'index'])->name('notes.index');
-
-Route::get('{book}/notes/create', [NoteController::class, 'create'])->name('notes.create');
-
-Route::post('notes/store', [NoteController::class, 'store'])->name('notes.store');
-
-Route::get('notes/show/{note}', [NoteController::class, 'show'])->name('notes.show'); //READ
-
-Route::get('notes/{note}/edit', [NoteController::class, 'edit'])->name('notes.edit'); //UPDATE
-
-Route::put('notes/{note}', [NoteController::class, 'update'])->name('notes.update');
-
-Route::delete('notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy'); //DELETE
-
-/*Route::get('/books', [BookController::class, 'index'])->name('books.index');
-
-Route::get('books/create', [BookController::class, 'create'])->name('books.create'); //CREATE
-
-Route::post('books/store', [BookController::class, 'store'])->name('books.store');
-
-Route::get('books/show/{book}', [BookController::class, 'show'])->name('books.show'); //READ
-
-Route::get('books/{book}/edit', [BookController::class, 'edit'])->name('books.edit'); //UPDATE
-
-Route::put('books/{book}', [BookController::class, 'update'])->name('books.update');
-
-Route::delete('books/{book}', [BookController::class, 'destroy'])->name('books.destroy'); //DELETE*/
+//Routes (index[GET], create[GET], store[POST], show[GET], edit[GET], update[PUT], destroy[DELETE])
+Route::middleware('auth')->group(function () {
+    Route::resource('books', BookController::class);
+    
+    Route::resource('notes', NoteController::class)->except(['create','store']);
+    Route::get('/notes/create/{book}', [NoteController::class, 'create'])->name('notes.create');
+    Route::post('notes/store/{book}', [NoteController::class, 'store'])->name('notes.store');
+});

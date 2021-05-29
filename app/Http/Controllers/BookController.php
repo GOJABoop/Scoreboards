@@ -28,7 +28,7 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->type = $request->type;
         $book->save();
-        return redirect()->route('books.show', $book);
+        return redirect()->route('dashboard', $book);
     }
 
     public function show(Book $book){
@@ -47,6 +47,6 @@ class BookController extends Controller
 
     public function destroy(Book $book){
         $book->delete();
-        return redirect()->route('books.index');
+        return redirect()->route('dashboard');
     }
 }
