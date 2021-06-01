@@ -3,8 +3,11 @@
 @section('title', 'Bookmakrs')
 
 @section('content')
-    <h1> Books </h1>
-    <a href="{{route('books.create')}}">Add book</a>
+@php
+    use App\Models\Book;
+    $books = Book::orderBy('id','desc')->where('user_id',"=",Auth::id())->paginate();
+@endphp
+    <a href="{{route('books.create')}}">Add book</a> <br>
     <ul>
         @foreach ($books as $book)
             <li> 

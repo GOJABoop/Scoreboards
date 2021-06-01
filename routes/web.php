@@ -13,6 +13,10 @@ use App\Http\Controllers\NoteController;
 | contains the "web" middleware group. Now create something great!
 */
 
+Route::get('panel',function(){
+    return view('panel');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
