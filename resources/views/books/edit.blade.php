@@ -1,12 +1,13 @@
-@extends('layouts.template')
+@extends('layouts.windmil')
 
-@section('title', 'Bookmarks ' . $book->title)
+@section('title', 'Edit book: ' . $book->title)
 
 @section('content')
-    <h1> Edit a book </h1>
+    <h1> <strong> Edit book </strong>{{$book->title}}</h1>
     <form action="{{route('books.update', $book)}}" method="POST">
         @csrf
         @method('put')
+        <br>
         <label>
             Title: <input type="text" name="title" value="{{old('title',$book->title)}}">
         </label>
@@ -30,7 +31,7 @@
             <small> *{{$message }} </small>
         @enderror
         
-        <br>
+        <br><br>
         <button type="submit">Edit book </button>
     </form>
 @endsection

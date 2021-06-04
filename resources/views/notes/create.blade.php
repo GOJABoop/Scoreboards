@@ -1,9 +1,9 @@
-@extends('layouts.template')
+@extends('layouts.windmil')
 
-@section('title', 'Bookmarks notes ' . $book->title)
+@section('title', 'Add bookmark: ' . $book->title)
 
 @section('content')
-    <h1>Add new bookmark {{$book->title}}</h1>
+    <h1><strong> New bookmark:</strong> {{$book->title}}</h1>
     <form action="{{route('notes.store',$book)}}", method="POST">
         @csrf
         <br>
@@ -21,6 +21,7 @@
         @error('body')
             <small> *{{$message }} </small>
         @enderror
-        <br><button type="submit">Add bookmark </button>
+
+        <br><br><button type="submit">Add bookmark </button>
     </form> 
 @endsection

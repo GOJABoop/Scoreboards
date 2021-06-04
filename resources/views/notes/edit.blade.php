@@ -1,12 +1,13 @@
-@extends('layouts.template')
+@extends('layouts.windmil')
 
-@section('title', 'Edit bookmark ' . $note->description)
+@section('title', 'Edit bookmark: ' . $note->description)
 
 @section('content')
-    <h1>Edit bookmark {{$note->description}} </h1>
+    <h1><strong>Edit bookmark: </strong> {{$note->description}} </h1>
     <form action="{{route('notes.update',$note)}}", method="POST">
         @csrf
         @method('put')
+        <br>
         <label>
             Description: <br><input type="text" name="description" value="{{old('description',$note->description)}}">
         </label>
@@ -22,6 +23,6 @@
             <small> *{{$message }} </small>
         @enderror
 
-        <br><button type="submit">Edit bookmark </button>
+        <br><br><button type="submit">Edit bookmark </button>
     </form> 
 @endsection

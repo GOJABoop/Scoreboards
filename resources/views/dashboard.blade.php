@@ -14,15 +14,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <a href="{{route('books.create')}}">Add book</a>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <ul>
+                {{--<ul>
                     @foreach ($books as $book)
                         <li> 
                             <a href="{{route('books.show', $book)}}">{{$book->title}} </a>
                         </li>
                     @endforeach
                 </ul>
-                {{$books->links()}}
-                <!--<x-jet-welcome />-->
+                {{$books->links()}}--}}
+                <x-jet-welcome />
             </div>
         </div>
     </div>

@@ -1,13 +1,13 @@
-@extends('layouts.template')
+@extends('layouts.windmil')
 
-@section('title', 'Bookmakrs')
+@section('title', 'Books')
 
 @section('content')
-@php
+{{--@php
     use App\Models\Book;
     $books = Book::orderBy('id','desc')->where('user_id',"=",Auth::id())->paginate();
-@endphp
-    <a href="{{route('books.create')}}">Add book</a> <br>
+@endphp--}}
+    <a href="{{route('books.create')}}">Add book</a> <br><br>
     <ul>
         @foreach ($books as $book)
             <li> 
@@ -18,3 +18,4 @@
 
     {{$books->links()}}
 @endsection
+

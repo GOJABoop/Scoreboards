@@ -1,6 +1,6 @@
-@extends('layouts.template')
+@extends('layouts.windmil')
 
-@section('title', 'Bookmarks notes ' . $book->title)
+@section('title', 'Bookmarks' . $book->title)
 
 @section('content')
     <h1>BookMarks {{$book->title}}</h1>
@@ -10,6 +10,7 @@
             <li> 
                 <p>{{$note->description}}</p>
             </li>
+            <br><br>
         @endforeach
     </ul>
 

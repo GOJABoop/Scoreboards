@@ -1,11 +1,12 @@
-@extends('layouts.template')
+@extends('layouts.windmil')
 
-@section('title', 'Bookmarks')
+@section('title', 'Add book')
 
 @section('content')
-    <h1> Add new book </h1>
+    <h1> <strong> Add book </strong> </h1>
     <form action="{{route('books.store')}}" method="POST">
         @csrf
+        <br>
         <label>
             Title: <input type="text" name="title" value="{{old('title')}}">
         </label>
@@ -13,7 +14,7 @@
             <small> *{{$message }} </small>
         @enderror
         
-        <br>
+        <br><br>
         <label>
             Author: <input type="text" name="author" value="{{old('author')}}">
         </label>
@@ -21,14 +22,14 @@
             <small> *{{$message }} </small>
         @enderror
 
-        <br>
+        <br><br>
         <label>
             Type: <input type="text" name="type" value="{{old('type')}}">
         </label>
         @error('type')
             <small> *{{$message }} </small>
         @enderror
-        <br>
+        <br><br>
         <button type="submit">Add book </button>
     </form>
 @endsection
