@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guide;
-use App\Models\GuideUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,25 +10,23 @@ use Illuminate\Support\Facades\Auth;
 class GuideUserController extends Controller{
     public function index(){
         $user = User::find(Auth::id());
-        return view('guide_users.index',compact('user'));
+        $guides = Guide::get();
+        return view('guide_users.index',compact('user','guides'));
     }
-
-    public function store(Request /*StoreTask*/ $request){
-        //$task = Task::create($request->all());
-        $guide_user = new GuideUser();
-        $guide_user->user_id = Auth::id();
-        $guide_user->guide_id = $request->id;
-        $guide_user->save();
-        //return redirect()->route('guide_users.show', $guide_user);
-        return redirect()->route('guide_users.index');
-    }
-
+    
     public function show(Guide $guide){
         return view('guide_users.show', compact('guide')); 
     }
 
-    public function destroy(GuideUser $guide){
-        $guide->delete();
+    public function store(Request $request){
+        $user = User::find(Auth::id());
+        $user->guides()->attach($request->guide_id);
+        return redirect()->route('guide_users.index');
+    }
+
+    public function destroy(Guide $guide){
+        $user = User::find(Auth::id());
+        $user->guides()->detach($guide->id);
         return redirect()->route('guide_users.index');
     }
 }

@@ -19,9 +19,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('tasks', TaskController::class);
     Route::resource('books', BookController::class);
     
-    Route::resource('notes', NoteController::class)->except(['create','store']);
     Route::get('/notes/create/{book}', [NoteController::class, 'create'])->name('notes.create');
     Route::post('notes/store/{book}', [NoteController::class, 'store'])->name('notes.store');
+    Route::resource('notes', NoteController::class)->except(['create','store']);
     
-    Route::resource('guide_users', GuideUserController::class)->except(['create','edit','update']);
+    Route::delete('guide_users/show/{guide}',  [GuideUserController::class, 'destroy'])->name('guide_users.destroy');
+    Route::get('guide_users/show/{guide}', [GuideUserController::class, 'show'])->name('guide_users.show');
+    Route::resource('guide_users', GuideUserController::class)->except(['create','edit','update','show','destroy']);
 });

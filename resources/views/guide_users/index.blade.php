@@ -3,12 +3,12 @@
 @section('title', 'Guides')
 
 @section('content')
-    <form action="#{{--route('guide_users.store',$guide)--}}", method="POST">
+    <form action="{{route('guide_users.store')}}", method="POST">
         @csrf
-        <label>Public guides: </label>
-        <select name="guide">
-            @foreach ($user->guides as $guide)
-                <option value="{{$guide}}">{{$guide->title}}</option>
+        <label>Public guides: </label><br>
+        <select name="guide_id">
+            @foreach ($guides as $guide)
+                <option value="{{$guide->id}}">{{$guide->title}}</option>
             @endforeach
         </select>
         <button type="submit">Follow guide</button>
@@ -17,9 +17,9 @@
     <br>
     <ul>
         @foreach ($user->guides as $guide)
-            <li> 
-                <a href="{{route('guide_users.show', $guide)}}">{{$guide->id}} </a>
-                <label> Title: {{$guide->title}}</label>
+            <li>
+                <a href="{{route('guide_users.show', $guide->id)}}">{{$guide->title}} </a>
+                {{--<label> Title: {{$guide->title}}</label>--}}
             </li>
         @endforeach
     </ul>
