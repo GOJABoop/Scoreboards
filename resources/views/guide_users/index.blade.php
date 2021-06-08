@@ -3,7 +3,18 @@
 @section('title', 'Guides')
 
 @section('content')
-    {{--<a href="{{route('tasks.create')}}">Add task</a> <br><br>--}}
+    <form action="#{{--route('guide_users.store',$guide)--}}", method="POST">
+        @csrf
+        <label>Public guides: </label>
+        <select name="guide">
+            @foreach ($user->guides as $guide)
+                <option value="{{$guide}}">{{$guide->title}}</option>
+            @endforeach
+        </select>
+        <button type="submit">Follow guide</button>
+    </form>
+    
+    <br>
     <ul>
         @foreach ($user->guides as $guide)
             <li> 

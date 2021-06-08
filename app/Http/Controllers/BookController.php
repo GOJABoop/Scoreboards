@@ -12,6 +12,7 @@ use App\Http\Requests\UpdateBook;
 class BookController extends Controller
 {
     public function index(){
+        //$books = Auth::user()->books()->orderBy('id','desc')->paginate();
         $books = Book::orderBy('id','desc')->where('user_id',"=",Auth::id())->paginate();
         return view('books.index',compact('books'));
     }

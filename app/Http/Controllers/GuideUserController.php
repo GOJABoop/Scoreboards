@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guide;
 use App\Models\GuideUser;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,13 +18,13 @@ class GuideUserController extends Controller{
         //$task = Task::create($request->all());
         $guide_user = new GuideUser();
         $guide_user->user_id = Auth::id();
-        $guide_user->guide_id = $request->guide_id;
+        $guide_user->guide_id = $request->id;
         $guide_user->save();
         //return redirect()->route('guide_users.show', $guide_user);
         return redirect()->route('guide_users.index');
     }
 
-    public function show(GuideUser $guide){
+    public function show(Guide $guide){
         return view('guide_users.show', compact('guide')); 
     }
 
