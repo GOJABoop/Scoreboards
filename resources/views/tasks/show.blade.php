@@ -3,10 +3,8 @@
 @section('title', 'Task: ' . $task->title)
 
 @section('content')
-    <div class="min-w-0 p-4 text-white bg-blue-600 rounded-lg shadow-xs">
-        <h4 class="mb-4 font-semibold">
-            <strong>{{$task->title}}</strong>
-        </h4>
+    <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
+        <label><strong>{{$task->title}}</strong></label>
     </div>
     <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
@@ -43,7 +41,7 @@
                     @csrf
                     <button 
                         type="submit" 
-                        class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                        class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-purple">
                         Edit
                     </button>
                 </form>
@@ -52,7 +50,7 @@
                 <form action="{{route('tasks.destroy',$task)}}" method="POST">
                     @csrf
                     @method('delete')
-                    <button class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    <button class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-purple">
                         Delete
                     </button>
                 </form>

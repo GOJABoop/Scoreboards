@@ -1,9 +1,11 @@
 @extends('layouts.windmil')
 
-@section('title', 'Edit book: ' . $task->title)
+@section('title', 'Edit task: ' . $task->title)
 
 @section('content')
-    <label>Edit Task</label>
+    <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
+        <label><strong>Edit: {{$task->title}}</strong></label>
+    </div>
     <form action="{{route('tasks.update', $task)}}" method="POST">
         @csrf
         @method('put')
