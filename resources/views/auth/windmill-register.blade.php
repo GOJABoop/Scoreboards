@@ -31,7 +31,7 @@
             <img
               aria-hidden="true"
               class="hidden object-cover w-full h-full dark:block"
-              src={{asset('img/create-account-office-dark.jpeg')}}
+              src={{asset('img/login-pc.jpeg')}}
               alt="Office"
             />
           </div>
@@ -41,6 +41,7 @@
                     class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200"
                 > Create account
                 </h1>
+                @include('partials.form-errors')
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
@@ -52,6 +53,7 @@
                             id="name"
                             type="text" 
                             name="name"
+                            value="{{old('name')}}"
                         />
                     </label>
 
@@ -63,6 +65,7 @@
                             id="email"
                             type="email" 
                             name="email"
+                            value="{{old('email')}}"
                         />
                     </label>
 
@@ -113,7 +116,7 @@
                 <p class="mt-4">
                     <a
                     class="text-sm font-medium text-green-600 dark:text-blue-400 hover:underline"
-                    href="./login.html"
+                    href="{{ route('login') }}"
                     >
                     Already have an account? Login
                     </a>

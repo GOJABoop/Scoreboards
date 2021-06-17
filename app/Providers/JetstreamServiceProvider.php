@@ -45,6 +45,10 @@ class JetstreamServiceProvider extends ServiceProvider
         Fortify::registerView(function(){
             return view('auth.windmill-register');
         });
+
+        Fortify::loginView(function(){
+            return view('auth.windmill-login');
+        });
     }
 
     /**
