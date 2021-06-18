@@ -23,5 +23,13 @@
             </li>
         @endforeach
     </ul>
+    <ul>
+        @foreach ($user->publishedGuides as $guide)
+            <li>
+                <a href="{{route('guide_users.show', $guide->id)}}">{{$guide->title}} </a>
+                {{--<label> Title: {{$guide->title}}</label>--}}
+            </li>
+        @endforeach
+    </ul>
     {{--$tasks->links()--}}
 @endsection

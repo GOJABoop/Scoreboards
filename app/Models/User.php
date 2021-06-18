@@ -70,4 +70,8 @@ class User extends Authenticatable
     public function guides(){
         return $this->belongsToMany(Guide::class);
     }
+
+    public function publishedGuides(){
+        return $this->hasMany(Guide::class);
+    }
 }
