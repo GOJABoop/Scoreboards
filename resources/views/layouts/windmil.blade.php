@@ -36,7 +36,7 @@
                 <!-- Theme toggler -->
                 @include('layouts.theme-toggler')
                 <!-- Notifications menu -->
-                @include('layouts.notifications-menu')
+                {{--@include('layouts.notifications-menu')--}}
                 <!-- Profile menu -->
                 @include('layouts.profile-menu')
             </ul>

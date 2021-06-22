@@ -8,7 +8,7 @@
       <svg
         class="w-5 h-5"
         aria-hidden="true"
-        fill="currentColor"
+        fill="black"
         viewBox="0 0 20 20"
       >
         <path

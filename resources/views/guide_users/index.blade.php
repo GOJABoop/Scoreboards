@@ -3,33 +3,92 @@
 @section('title', 'Guides')
 
 @section('content')
-    <form action="{{route('guide_users.store')}}", method="POST">
-        @csrf
-        <label>Public guides: </label><br>
-        <select name="guide_id">
-            @foreach ($guides as $guide)
-                <option value="{{$guide->id}}">{{$guide->title}}</option>
-            @endforeach
-        </select>
-        <button type="submit">Follow guide</button>
-    </form>
+    <div class="min-w-0 p-4 text-white bg-blue-600 rounded-lg shadow-xs">
+        <label> <strong>Guides</strong></label>
+    </div>
     
-    <br>
-    <ul>
-        @foreach ($user->guides as $guide)
-            <li>
-                <a href="{{route('guide_users.show', $guide->id)}}">{{$guide->title}} </a>
-                {{--<label> Title: {{$guide->title}}</label>--}}
-            </li>
-        @endforeach
-    </ul>
-    <ul>
-        @foreach ($user->publishedGuides as $guide)
-            <li>
-                <a href="{{route('guide_users.show', $guide->id)}}">{{$guide->title}} </a>
-                {{--<label> Title: {{$guide->title}}</label>--}}
-            </li>
-        @endforeach
-    </ul>
-    {{--$tasks->links()--}}
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <label class="block mt-4 text-sm">
+            <div class="relative text-gray-500 focus-within:text-purple-600">
+                <label class="block mt-4 text-sm">
+                    <form action="{{route('guide_users.store')}}", method="POST">
+                        @csrf
+                        <select 
+                            class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                            name="guide_id">
+                            @foreach ($guides as $guide)
+                                <option value="{{$guide->id}}">{{$guide->title}}</option>
+                            @endforeach
+                        </select>
+                        <button 
+                            class="absolute inset-y-0 right-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-r-md active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red"
+                            type="submit">
+                            Follow
+                        </button>
+                    </form>
+                </label>
+            </div>
+        </label>
+    </div>
+    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+        <div class="w-full overflow-x-auto">
+            <table class="w-full whitespace-no-wrap">
+                <thead>
+                <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                    <th class="px-4 py-3">Title</th>
+                    <th class="px-4 py-3">Description</th>
+                    <th class="px-4 py-3">Created</th>
+                    <th class="px-4 py-3">Updated</th>
+                    <th class="px-4 py-3">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                    @foreach ($user->guides as $guide)
+                        <tr>
+                            {{--TITLE--}}
+                            <td class="px-4 py-3 text-xs">
+                                <a href="{{route('guide_users.show',$guide)}}" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                    {{$guide->title}}
+                                </a>
+                            </td>
+                            {{--DESCRIPTION--}}
+                            <td class="px-4 py-3">
+                                <div class="flex items-center text-sm">
+                                <div>
+                                    <p class="font-semibold">{{$guide->description}}</p>
+                                </div>
+                                </div>
+                            </td>
+                            {{--CREATED DATE--}}
+                            <td class="px-4 py-3 text-sm">
+                                {{$guide->created_at}}
+                            </td>
+                            {{--UPDATED DATE--}}
+                            <td class="px-4 py-3 text-sm">
+                                {{$guide->updated_at}}
+                            </td>
+                            {{--ACTIONS--}}
+                            <td class="px-4 py-3">
+                                <div class="flex items-center space-x-4 text-sm">
+                                    <form action="{{route('guide_users.destroy', $guide)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-purple" aria-label="Like">
+                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" fill-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        {{--PAGINATION--}}
+        <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+          
+        </div>
+    </div>
 @endsection
