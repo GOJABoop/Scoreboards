@@ -54,6 +54,7 @@
                         type="email" 
                         name="email"
                         value="{{old('email')}}"
+                        required
                     />
                 </label>
                 <label class="block mt-4 text-sm">
@@ -64,6 +65,7 @@
                         type="password"
                         id="password"
                         name="password"
+                        required
                     />
                 </label>
 

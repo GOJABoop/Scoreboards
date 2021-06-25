@@ -19,7 +19,9 @@
                 placeholder="Hamlet">
             </label>
             @error('title')
-                <small> *{{$message }} </small>
+                <span class="text-xs text-red-600 dark:text-red-400">
+                    *{{$message }}
+                </span>
             @enderror
             
             <label class="block text-sm">
@@ -32,7 +34,9 @@
                     placeholder="William Shakespeare">
             </label>
             @error('author')
-                <small> *{{$message }} </small>
+                <span class="text-xs text-red-600 dark:text-red-400">
+                    *{{$message }}
+                </span>
             @enderror
             
             <label class="block text-sm">
@@ -45,7 +49,9 @@
                     placeholder="Theater">
             </label>
             @error('type')
-                <small> *{{$message }} </small>
+                <span class="text-xs text-red-600 dark:text-red-400">
+                    *{{$message }}
+                </span>
             @enderror
         </div>
         <button 

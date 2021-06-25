@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreGuide extends FormRequest
 {
@@ -23,8 +24,14 @@ class StoreGuide extends FormRequest
      */
     public function rules()
     {
+        $this->merge([
+            'user_id'=> Auth::id(),
+        ]);
         return [
-            //
+            'title' => 'required',  //|max:10 other validation
+            'description' => 'required',
+            'author' => 'required',
+            'body' => 'required'
         ];
     }
 }

@@ -24,7 +24,6 @@ class StoreNote extends FormRequest
     public function rules()
     {
         return [
-            'book_id' => 'required',
             'description' => 'required',
             'body' => 'required'
         ];

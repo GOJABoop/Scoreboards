@@ -7,8 +7,8 @@
     <label> <strong> Edit guide </strong></label><br>
     <label><strong>{{$guide->title}}</strong></label>
 </div>
-<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <form action="{{route('guides.update',$guide)}}", method="POST">
+<form action="{{route('guides.update',$guide)}}", method="POST">
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
         @csrf
         @method('put')
         <label class="block text-sm">
@@ -18,11 +18,12 @@
                 placeholder="Computing"
                 type="text" 
                 name="title" 
-                value="{{old('title',$guide->title)}}"
-                >
+                value="{{old('title',$guide->title)}}">
         </label>
         @error('title')
-            <small> *{{$message }} </small>
+            <span class="text-xs text-red-600 dark:text-red-400">
+                *{{$message }}
+            </span>
         @enderror
 
         <label class="block text-sm">
@@ -32,11 +33,12 @@
                 placeholder="Write something significant"
                 type="text" 
                 name="description" 
-                value="{{old('description',$guide->description)}}"
-                >
+                value="{{old('description',$guide->description)}}">
         </label>
         @error('description')
-            <small> *{{$message }} </small>
+            <span class="text-xs text-red-600 dark:text-red-400">
+                *{{$message }}
+            </span>
         @enderror
 
         <label class="block text-sm">
@@ -46,11 +48,12 @@
                 placeholder="John Smith"
                 type="text" 
                 name="author" 
-                value="{{old('author',$guide->author)}}"
-                >
+                value="{{old('author',$guide->author)}}">
         </label>
         @error('author')
-            <small> *{{$message }} </small>
+            <span class="text-xs text-red-600 dark:text-red-400">
+                *{{$message }}
+            </span>
         @enderror
 
         <label class="block mt-4 text-sm">
@@ -59,18 +62,19 @@
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" 
                 rows="18" 
                 placeholder="Enter content."
-                name="body" 
-                >{{old('body',$guide->body)}}</textarea>
+                name="body" >{{old('body',$guide->body)}}</textarea>
         </label>
         @error('body')
-            <small> *{{$message }} </small>
+            <span class="text-xs text-red-600 dark:text-red-400">
+                *{{$message }}
+            </span>
         @enderror
-
-        <button 
-            type="submit"
-            Class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-purple">
-            Edit guide 
-        </button>
-    </form>
-</div>
+    </div>
+    
+    <button 
+        type="submit"
+        Class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-purple">
+        Edit guide 
+    </button>
+</form>
 @endsection

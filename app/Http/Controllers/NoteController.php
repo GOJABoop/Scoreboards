@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Facade\FlareClient\View;
 use App\Models\Book;
 use App\Models\Note;
 use App\Http\Requests\StoreNote;
 use App\Http\Requests\UpdateNote;
+use Illuminate\Support\Facades\Gate;
 
 class NoteController extends Controller
 {
@@ -20,17 +19,14 @@ class NoteController extends Controller
         return view('notes.create',compact('book'));
     }
 
-    public function store(/*StoreNote*/ Request $request,Book $book){
-        //$note = Note::create($request->all());
-        $note = new Note();
-        $note->book_id = $book->id;
-        $note->description = $request->description;
-        $note->body = $request->body;
-        $note->save();
+    public function store(StoreNote $request,Book $book){
+        $request->merge(['book_id' => $book->id]);
+        Note::create($request->all());
         return redirect()->route('books.show',compact('book'));
     }
 
     public function show(Note $note){
+        Gate::authorize('show-note',$note);
         return view('notes.show',compact('note'));
     }
 

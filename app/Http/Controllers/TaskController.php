@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
-use function GuzzleHttp\Promise\task;
 use App\Http\Requests\UpdateTask;
 use App\Http\Requests\StoreTask;
+use Illuminate\Support\Facades\Gate;
 
 class TaskController extends Controller
 {
@@ -20,18 +19,13 @@ class TaskController extends Controller
         return view('tasks.create');
     }
 
-    public function store(Request /*StoreTask*/ $request){
-        //$task = Task::create($request->all());
-        $task = new Task();
-        $task->user_id = Auth::id();
-        $task->title = $request->title;
-        $task->description = $request->description;
-        $task->due_date = $request->due_date;
-        $task->save();
-        return redirect()->route('tasks.show', $task);
+    public function store(StoreTask $request){
+        $task = Task::create($request->all());
+        return redirect()->route('tasks.index', $task);
     }
 
     public function show(Task $task){
+        Gate::authorize('show-task',$task);
         return view('tasks.show', compact('task')); 
     }
 

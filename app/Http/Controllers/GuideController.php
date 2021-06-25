@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Guide;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateGuide;
 use App\Http\Requests\StoreGuide;
+use Illuminate\Support\Facades\Gate;
 
 class GuideController extends Controller
 {
@@ -20,19 +19,13 @@ class GuideController extends Controller
         return view('guides.create');
     }
 
-    public function store(Request /*StoreBook*/ $request){
-        //$book = Book::create($request->all());
-        $guide = new Guide();
-        $guide->user_id = Auth::id();
-        $guide->title = $request->title;
-        $guide->description = $request->description;
-        $guide->body = $request->body;
-        $guide->author = $request->author;
-        $guide->save();
+    public function store(StoreGuide $request){
+        $guide = Guide::create($request->all());
         return redirect()->route('guides.show', $guide);
     }
 
     public function show(Guide $guide){
+        Gate::authorize('show-guide',$guide);
         return view('guides.show', compact('guide')); 
     }
 

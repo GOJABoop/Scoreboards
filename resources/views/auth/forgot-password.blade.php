@@ -90,6 +90,7 @@
                         name="email"
                         id="email"
                         value="{{old('email')}}"
+                        required
                     />
                 </label>
 

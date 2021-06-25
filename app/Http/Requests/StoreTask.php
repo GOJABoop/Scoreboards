@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreTask extends FormRequest
 {
@@ -23,6 +24,9 @@ class StoreTask extends FormRequest
      */
     public function rules()
     {
+        $this->merge([
+            'user_id'=> Auth::id(),
+        ]);
         return [
             'title' => 'required',
             'description' => 'required',

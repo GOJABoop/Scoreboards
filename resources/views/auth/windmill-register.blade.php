@@ -54,6 +54,7 @@
                             type="text" 
                             name="name"
                             value="{{old('name')}}"
+                            required
                         />
                     </label>
 
@@ -66,6 +67,7 @@
                             type="email" 
                             name="email"
                             value="{{old('email')}}"
+                            required
                         />
                     </label>
 
@@ -77,6 +79,7 @@
                             type="password"
                             id="password"
                             name="password"
+                            required
                         />
                     </label>
 
@@ -90,6 +93,7 @@
                             type="password"
                             id="password_confirmation"
                             name="password_confirmation"
+                            required
                         />
                     </label>
                     {{--<div class="flex mt-6 text-sm">

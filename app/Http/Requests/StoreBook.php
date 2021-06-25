@@ -24,8 +24,10 @@ class StoreBook extends FormRequest
      */
     public function rules()
     {
+        $this->merge([
+            'user_id'=> Auth::id(),
+        ]);
         return [
-            'user_id' => Auth::id(),
             'title' => 'required',  //|max:10 other validation
             'author' => 'required',
             'type' => 'required'

@@ -21,7 +21,9 @@
                 placeholder="Study for test">
             </label>
             @error('title')
-                <small> *{{$message }} </small>
+                <span class="text-xs text-red-600 dark:text-red-400">
+                    *{{$message }}
+                </span>
             @enderror
             {{--DESCRIPTION--}}
             <label class="block mt-4 text-sm">
@@ -31,10 +33,12 @@
                     class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" 
                     rows="3" 
                     placeholder="Enter some description."
-                >{{old('description',$task->description)}}</textarea>
+                    >{{old('description',$task->description)}}</textarea>
             </label>
             @error('description')
-                <small> *{{$message }} </small>
+                <span class="text-xs text-red-600 dark:text-red-400">
+                    *{{$message }}
+                </span>
             @enderror
             {{--DUE DATE--}}
             <label class="block text-sm">
@@ -44,10 +48,12 @@
                     name="due_date" 
                     value="{{old('due_date',$task->due_date)}}"
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" 
-                    placeholder="The Aleph">
+                    >
             </label>
             @error('due_date')
-                <small> *{{$message }} </small>
+                <span class="text-xs text-red-600 dark:text-red-400">
+                    *{{$message }}
+                </span>
             @enderror
         </div>
         <button 

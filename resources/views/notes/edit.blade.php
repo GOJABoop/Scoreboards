@@ -22,7 +22,9 @@
                 placeholder="Write something meaningful">
             </label>
             @error('description')
-                <small> *{{$message }} </small>
+                <span class="text-xs text-red-600 dark:text-red-400">
+                    *{{$message }}
+                </span>
             @enderror
             {{--BODY--}}
             <label class="block mt-4 text-sm">
@@ -35,7 +37,9 @@
                 >{{old('body',$note->body)}}</textarea>
             </label>
             @error('body')
-                <small> *{{$message }} </small>
+                <span class="text-xs text-red-600 dark:text-red-400">
+                    *{{$message }}
+                </span>
             @enderror
         </div>
         {{--BUTTOM--}}
