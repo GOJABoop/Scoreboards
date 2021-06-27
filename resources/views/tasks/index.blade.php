@@ -90,5 +90,5 @@
           
         </div>
     </div>
-    {{$tasks->links()}}
+    {{--$tasks->links()--}}
 @endsection

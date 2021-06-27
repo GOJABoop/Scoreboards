@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateTask;
 use App\Http\Requests\StoreTask;
@@ -11,7 +12,8 @@ use Illuminate\Support\Facades\Gate;
 class TaskController extends Controller
 {
     public function index(){
-        $tasks = Task::orderBy('id','desc')->where('user_id',"=",Auth::id())->paginate();
+        //$tasks = Auth::user()->tasks()->with('user')->get();
+        $tasks = Auth::user()->tasks;
         return view('tasks.index',compact('tasks'));
     }
 

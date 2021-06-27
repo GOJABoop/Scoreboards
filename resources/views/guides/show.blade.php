@@ -39,7 +39,8 @@
                   </svg>
                 </button>
             </form>
-          </div>
+        </div>
+        <div>
           <form action="{{route('guides.destroy',$guide)}}" method="POST">
             @csrf
             @method('delete')

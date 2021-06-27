@@ -96,6 +96,6 @@
           
         </div>
       </div>     
-    {{$books->links()}}
+    {{--$books->links()--}}
 @endsection
 
