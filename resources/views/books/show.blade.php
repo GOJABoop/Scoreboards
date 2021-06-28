@@ -62,7 +62,7 @@
                     {{--<th class="px-4 py-3">ID</th>--}}
                     <th class="px-4 py-3">Description</th>
                     <th class="px-4 py-3">Body</th>
-                    <th class="px-4 py-3">Created</th>
+                    <th class="px-4 py-3">Added</th>
                     <th class="px-4 py-3">Actions</th>
                 </tr>
                 </thead>
@@ -85,7 +85,7 @@
                             </td>
                             {{--CREATED AT--}}
                             <td class="px-4 py-3 text-xs">
-                                {{$note->created_at}}
+                                {{$note->created_at->format('d/m/Y')}}
                             </td>
                             {{--ACTIONS--}}
                             <td class="px-4 py-3">

@@ -13,8 +13,8 @@
      
         <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
             By {{$guide->author}} <br>
-            Aggregate: {{$guide->created_at}}<br>
-            Last update: {{$guide->updated_at}}
+            Aggregate: {{$guide->created_at->format('d/m/Y')}}<br>
+            Last update: {{$guide->updated_at->format('d/m/Y')}}
          </p>
          <form action="{{route('guide_users.destroy', $guide)}}" method="POST">
             @csrf

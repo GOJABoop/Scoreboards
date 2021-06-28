@@ -38,10 +38,10 @@
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
                                     <!-- Avatar with inset shadow -->
-                                    <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                    {{--<div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
                                     <img class="object-cover w-full h-full rounded-full" src="" alt="" loading="lazy">
                                     <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                                    </div>
+                                    </div>--}}
                                     <div>
                                         <a href="{{route('books.show',$book)}}" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
                                             {{$book->title}}

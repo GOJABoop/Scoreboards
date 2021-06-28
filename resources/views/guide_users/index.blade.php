@@ -61,11 +61,11 @@
                             </td>
                             {{--CREATED DATE--}}
                             <td class="px-4 py-3 text-sm">
-                                {{$guide->created_at}}
+                                {{$guide->created_at->format('d/m/Y')}}
                             </td>
                             {{--UPDATED DATE--}}
                             <td class="px-4 py-3 text-sm">
-                                {{$guide->updated_at}}
+                                {{$guide->updated_at->format('d/m/Y')}}
                             </td>
                             {{--ACTIONS--}}
                             <td class="px-4 py-3">

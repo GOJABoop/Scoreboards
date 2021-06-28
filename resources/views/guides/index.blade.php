@@ -47,7 +47,7 @@
                             </td>
                             {{--TYPE--}}
                             <td class="px-4 py-3 text-xs">
-                                {{$guide->created_at}}
+                                {{$guide->created_at->format('d/m/Y')}}
                             </td>
                             {{--ACTIONS--}}
                             <td class="px-4 py-3">

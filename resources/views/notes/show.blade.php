@@ -12,8 +12,8 @@
         </p>
         <br>
         <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            Aggregate: {{$note->created_at}}<br>
-            Last update: {{$note->updated_at}}
+            Aggregate: {{$note->updated_at->format('d/m/Y')}}<br>
+            Last update: {{$note->updated_at->format('d/m/Y')}}
          </p>
     </div>
     <div class="flex flex-col flex-wrap mb-4 space-y-4 md:flex-row md:items-end md:space-x-4">

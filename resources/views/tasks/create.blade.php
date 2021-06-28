@@ -62,6 +62,14 @@
             Add task
         </button>
     </form>
-
+    <!--Imagen de la mascota-->
+    {{--<div class="form-group">
+        <label for="foto"><strong>Subir foto:</strong></label><br>
+        <img class="img-thumbnail" id="fotoPreview" alt="Imagen subida" width="200" height="auto"/>
+        <div class="custom-file">
+            <input class="custom-file-input form-control" type="file" name="foto" id="foto" onchange="document.getElementById('fotoPreview').src = window.URL.createObjectURL(this.files[0])">
+            <label class="custom-file-label" for="foto">Seleccionar imagen...</label>
+        </div>
+    </div>--}}
     
 @endsection

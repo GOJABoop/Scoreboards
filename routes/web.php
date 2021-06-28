@@ -6,6 +6,7 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\GuideUserController;
 use App\Http\Controllers\GuideController;
+use App\Http\Controllers\FileController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
@@ -47,4 +48,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::resource('guide_users', GuideUserController::class)->except(['create','edit','update','show','destroy']);
 
     Route::resource('guides', GuideController::class);
+
+    Route::get('files/download/{file}', [FileController::class, 'download'])->name('files.download');
+    Route::resource('files',FileController::class)->except(['edit','update','show','destroy']);
 });
