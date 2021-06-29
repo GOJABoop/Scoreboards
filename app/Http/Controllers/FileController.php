@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
+use App\Models\Guide;
 use FFI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -39,12 +40,14 @@ class FileController extends Controller
         if($request->hasFile('file') && $request->file('file')->isValid()){
             $path =  $request->file->store('documents');
             $file = new File();
+            $file->guide_id = $request->guide_id;
             $file->path = $path;
             $file->original_name = $request->file->getClientOriginalName();
             $file->mime = $request->file->getMimeType();
             $file->save();
         }
-        return redirect()->route('guides.index');
+        $guide = Guide::find($request->guide_id);
+        return redirect()->route('guides.show',compact('guide'));
     }
 
     /**
@@ -84,9 +87,10 @@ class FileController extends Controller
      * @param  \App\Models\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function destroy(File $file)
-    {
-        //
+    public function destroy(File $file){
+        $guide = Guide::find($file->guide_id);
+        $file->delete();
+        return redirect()->route('guides.show',compact('guide'));
     }
 
 }

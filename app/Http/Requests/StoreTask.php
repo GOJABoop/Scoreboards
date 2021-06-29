@@ -28,8 +28,8 @@ class StoreTask extends FormRequest
             'user_id'=> Auth::id(),
         ]);
         return [
-            'title' => 'required',
-            'description' => 'required',
+            'title' => ['required','string','max:50'],
+            'description' => ['required','string','max:255'],
             'due_date' => 'required'
         ];
     }

@@ -45,10 +45,11 @@ Route::middleware('auth', 'verified')->group(function () {
     
     Route::delete('guide_users/show/{guide}',  [GuideUserController::class, 'destroy'])->name('guide_users.destroy');
     Route::get('guide_users/show/{guide}', [GuideUserController::class, 'show'])->name('guide_users.show');
+    Route::get('guide_users/show_all/', [GuideUserController::class, 'showAll'])->name('guide_users.show_all');
     Route::resource('guide_users', GuideUserController::class)->except(['create','edit','update','show','destroy']);
 
     Route::resource('guides', GuideController::class);
 
     Route::get('files/download/{file}', [FileController::class, 'download'])->name('files.download');
-    Route::resource('files',FileController::class)->except(['edit','update','show','destroy']);
+    Route::resource('files',FileController::class)->except(['edit','update','show']);
 });

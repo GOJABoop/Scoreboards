@@ -28,9 +28,9 @@ class StoreBook extends FormRequest
             'user_id'=> Auth::id(),
         ]);
         return [
-            'title' => 'required',  //|max:10 other validation
-            'author' => 'required',
-            'type' => 'required'
+            'title' => ['required','string','max:255'],
+            'author' => ['required','string','max:50'],
+            'type' => ['required','string','max:30']
         ];
     }
 }

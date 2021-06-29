@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="min-w-0 p-4 text-white bg-blue-600 rounded-lg shadow-xs">
-        <label> <strong>{{$note->description}}</strong></label>
+        <label> <strong>{{$note->description}}</strong> ({{$note->book->title}})</label>
     </div>
     <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <p class="text-gray-600 dark:text-gray-400">

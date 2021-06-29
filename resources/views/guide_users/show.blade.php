@@ -12,7 +12,7 @@
         </p>
      
         <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            By {{$guide->author}} <br>
+            By {{$guide->user->name}} as {{$guide->author}} <br>
             Aggregate: {{$guide->created_at->format('d/m/Y')}}<br>
             Last update: {{$guide->updated_at->format('d/m/Y')}}
          </p>
@@ -31,10 +31,54 @@
             {{$guide->body}}
         </p>
     </div>
+    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+        <div class="w-full overflow-x-auto">
+            <table class="w-full whitespace-no-wrap">
+                <thead>
+                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                        <th class="px-4 py-3">File</th>
+                        <th class="px-4 py-3">download</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                    @foreach ($files as $file)
+                        <tr>
+                            {{--TITLE--}}
+                            <td class="px-4 py-3 text-xs">
+                                <a href="#" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                    {{$file->original_name}}
+                                </a>
+                            </td>
+                            {{--ACTIONS--}}
+                            <td class="px-4 py-3">
+                                <div class="flex items-center space-x-4 text-sm">
+                                    <form action="{{route('files.download', $file)}}" method="GET">
+                                        @csrf
+                                        <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-full active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-purple" aria-label="Edit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-bar-to-down" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <line x1="4" y1="20" x2="20" y2="20" />
+                                                <line x1="12" y1="14" x2="12" y2="4" />
+                                                <line x1="12" y1="14" x2="16" y2="10" />
+                                                <line x1="12" y1="14" x2="8" y2="10" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        {{--PAGINATION--}}
+        <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+        </div>
+    </div>
     <div class="flex flex-col flex-wrap mb-8 space-y-4 md:flex-row md:items-end md:space-x-4">
         <div>
             @can('update', $guide)
-                <form action="{{route('guides.edit',$guide)}}" method="GET">
+                <form action="{{route('guides.show',$guide)}}" method="GET">
                     @csrf
                     <button class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
                     <span>Edit</span>

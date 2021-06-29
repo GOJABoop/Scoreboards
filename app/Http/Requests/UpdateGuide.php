@@ -24,9 +24,9 @@ class UpdateGuide extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'author' => 'required',
+            'title' => ['required','string','max:255'],
+            'description' => ['required','string','max:255'],
+            'author' => ['required','string','max:40'],
             'body' => 'required'
         ];
     }

@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Gate;
 class BookController extends Controller
 {
     public function index(){
-        $books = Auth::user()->books()->with('notes')->get();
+        //$books = Auth::user()->books()->with('notes')->get(); //Eager Loading not necessary
+        $books = Auth::user()->books;
         return view('books.index',compact('books'));
     }
 
@@ -27,6 +28,7 @@ class BookController extends Controller
 
     public function show(Book $book){
         Gate::authorize('show-book',$book);
+        //$notes = Note::with('book.title')->get();
         return view('books.show', compact('book')); 
     }
 

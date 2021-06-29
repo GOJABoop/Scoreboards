@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Gate;
 class TaskController extends Controller
 {
     public function index(){
-        //$tasks = Auth::user()->tasks()->with('user')->get();
+        //$tasks = Auth::user()->tasks()->with('user')->get(); //Eager loading not necessary
         $tasks = Auth::user()->tasks;
         return view('tasks.index',compact('tasks'));
     }

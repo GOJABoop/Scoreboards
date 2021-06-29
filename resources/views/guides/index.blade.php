@@ -32,8 +32,6 @@
                             {{--TITLE--}}
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
-                                    <!-- Avatar with inset shadow -->
-                                    
                                     <div>
                                         <a href="{{route('guides.show',$guide)}}" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
                                             {{$guide->title}}
@@ -87,5 +85,6 @@
         <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
           
         </div>
-      </div>   
+      </div>
+      {{$guides->links()}}  
 @endsection

@@ -24,8 +24,8 @@ class UpdateTask extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
+            'title' => ['required','string','max:50'],
+            'description' => ['required','string','max:255'],
             'due_date' => 'required'
         ];
     }

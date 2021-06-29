@@ -26,7 +26,8 @@ class GuideController extends Controller
 
     public function show(Guide $guide){
         Gate::authorize('show-guide',$guide);
-        return view('guides.show', compact('guide')); 
+        $files = $guide->files;
+        return view('guides.show', compact('guide','files')); 
     }
 
     public function edit(Guide $guide){

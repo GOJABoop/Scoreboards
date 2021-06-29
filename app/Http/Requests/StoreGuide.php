@@ -28,9 +28,9 @@ class StoreGuide extends FormRequest
             'user_id'=> Auth::id(),
         ]);
         return [
-            'title' => 'required',  //|max:10 other validation
-            'description' => 'required',
-            'author' => 'required',
+            'title' => ['required','string','max:255'],
+            'description' => ['required','string','max:255'],
+            'author' => ['required','string','max:40'],
             'body' => 'required'
         ];
     }

@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class GuideUserController extends Controller{
     public function index(){
         $user = User::find(Auth::id());
-        $guides = Guide::get();
+        $guides = Guide::with('user')->get();
         return view('guide_users.index',compact('user','guides'));
     }
     
     public function show(Guide $guide){
-        return view('guide_users.show', compact('guide')); 
+        $files = $guide->files;
+        return view('guide_users.show', compact('guide','files')); 
     }
 
     public function store(Request $request){
@@ -28,5 +29,10 @@ class GuideUserController extends Controller{
         $user = User::find(Auth::id());
         $user->guides()->detach($guide->id);
         return redirect()->route('guide_users.index');
+    }
+
+    public function showAll(){
+        $guides = Guide::with('user')->get(); //Eager loading
+        return view('guide_users.show_all',compact('guides'));
     }
 }

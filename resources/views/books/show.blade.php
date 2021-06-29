@@ -61,7 +61,6 @@
                 <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                     {{--<th class="px-4 py-3">ID</th>--}}
                     <th class="px-4 py-3">Description</th>
-                    <th class="px-4 py-3">Body</th>
                     <th class="px-4 py-3">Added</th>
                     <th class="px-4 py-3">Actions</th>
                 </tr>
@@ -74,14 +73,6 @@
                                 <a href="{{route('notes.show',$note)}}" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
                                     {{$note->description}}
                                 </a>
-                            </td>
-                            {{--BODY--}}
-                            <td class="px-4 py-3">
-                                <div class="flex items-center text-sm">
-                                    <div>
-                                        {{$note->body}}
-                                    </div>
-                                </div>
                             </td>
                             {{--CREATED AT--}}
                             <td class="px-4 py-3 text-xs">

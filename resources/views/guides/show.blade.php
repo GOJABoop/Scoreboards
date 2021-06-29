@@ -68,7 +68,8 @@
         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
             <label class="block mt-4 text-sm">
                 <div class="relative text-gray-500 focus-within:text-purple-600">
-                  <input
+                    <input id="guide_id" name="guide_id" type="hidden" value="{{$guide->id}}">
+                    <input
                     type="file" 
                     name="file" 
                     id="file"
@@ -88,10 +89,7 @@
             </label>
         </div> 
     </form>
-    @php
-        use App\Models\File;
-        $files = File::all();
-    @endphp
+    {{--FILES--}}
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
@@ -125,7 +123,7 @@
                                             </svg>
                                         </button>
                                     </form>
-                                    <form action="#" method="">
+                                    <form action="{{route('files.destroy',$file)}}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-purple" aria-label="Like">
