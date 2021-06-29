@@ -22,7 +22,7 @@ class GuideUserController extends Controller{
     public function store(Request $request){
         $user = User::find(Auth::id());
         $user->guides()->attach($request->guide_id);
-        return redirect()->route('guide_users.index');
+        return redirect()->route('guide_users.index');//->with(['message' => 'Guide added']);
     }
 
     public function destroy(Guide $guide){

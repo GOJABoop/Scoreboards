@@ -1,5 +1,3 @@
-<div class="alert alert-warning alert-dismissible">
-    <button type="button" class="close" data-dimiss="alert"></button>
-    close
-</div>
-<br>
+@if(session()->has('message'))
+    <button type="button">{{session('message')}}</button>  
+@endif
