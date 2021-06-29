@@ -2,11 +2,7 @@
 
 @section('title', 'Books')
 
-@section('content')
-{{--@php
-    use App\Models\Book;
-    $books = Book::orderBy('id','desc')->where('user_id',"=",Auth::id())->paginate();
-@endphp--}}
+@section('content')  
     <div class="min-w-0 p-4 text-white bg-blue-600 rounded-lg shadow-xs">
         <label> <strong>Books</strong></label>
     </div>
