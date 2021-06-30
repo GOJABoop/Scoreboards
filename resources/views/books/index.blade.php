@@ -2,7 +2,8 @@
 
 @section('title', 'Books')
 
-@section('content')  
+@section('content')
+    @include('partials.user-message')
     <div class="min-w-0 p-4 text-white bg-blue-600 rounded-lg shadow-xs">
         <label> <strong>Books</strong></label>
     </div>

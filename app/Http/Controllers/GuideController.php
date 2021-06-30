@@ -21,7 +21,8 @@ class GuideController extends Controller
 
     public function store(StoreGuide $request){
         $guide = Guide::create($request->all());
-        return redirect()->route('guides.show', $guide);
+        return redirect()->route('guides.show', $guide)
+            ->with(['message' => 'Successfully stored guide!']);
     }
 
     public function show(Guide $guide){
@@ -36,11 +37,13 @@ class GuideController extends Controller
 
     public function update(UpdateGuide $request, Guide $guide){
         $guide->update($request->all());
-        return redirect()->route('guides.show', $guide);
+        return redirect()->route('guides.show', $guide)
+            ->with(['message' => 'Successfully updated guide!']);
     }
 
     public function destroy(Guide $guide){
         $guide->delete();
-        return redirect()->route('guides.index');
+        return redirect()->route('guides.index')
+            ->with(['message' => 'Successfully deleted guide!']);
     }
 }

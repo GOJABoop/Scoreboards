@@ -23,12 +23,12 @@ class BookController extends Controller
 
     public function store(StoreBook $request){ //StoreBook = validations
         $book = Book::create($request->all());
-        return redirect()->route('books.show', $book);
+        return redirect()->route('books.show', $book)
+            ->with(['message' => 'Successfully stored book!']);
     }
 
     public function show(Book $book){
         Gate::authorize('show-book',$book);
-        //$notes = Note::with('book.title')->get();
         return view('books.show', compact('book')); 
     }
 
@@ -38,11 +38,13 @@ class BookController extends Controller
 
     public function update(UpdateBook $request, Book $book){
         $book->update($request->all());
-        return redirect()->route('books.show', $book);
+        return redirect()->route('books.show', $book)
+            ->with(['message' => 'Successfully updated book!']);
     }
 
     public function destroy(Book $book){
         $book->delete();
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')
+            ->with(['message' => 'Successfully deleted book!']);
     }
 }

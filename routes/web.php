@@ -39,6 +39,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::resource('tasks', TaskController::class);
     
     Route::resource('books', BookController::class);
+    
     Route::get('/notes/create/{book}', [NoteController::class, 'create'])->name('notes.create');
     Route::post('notes/store/{book}', [NoteController::class, 'store'])->name('notes.store');
     Route::resource('notes', NoteController::class)->except(['create','store']);
@@ -51,5 +52,5 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::resource('guides', GuideController::class);
 
     Route::get('files/download/{file}', [FileController::class, 'download'])->name('files.download');
-    Route::resource('files',FileController::class)->except(['edit','update','show']);
+    Route::resource('files',FileController::class)->except(['index','create','edit','update','show']);
 });

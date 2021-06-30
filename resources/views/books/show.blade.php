@@ -3,6 +3,7 @@
 @section('title', $book->title)
 
 @section('content')
+    @include('partials.user-message')
     <div class="min-w-0 p-4 text-white bg-blue-600 rounded-lg shadow-xs">
         <label> <strong>{{$book->title}}</strong></label>
     </div>

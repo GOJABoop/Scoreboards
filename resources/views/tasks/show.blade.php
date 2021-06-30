@@ -3,6 +3,7 @@
 @section('title', 'Task: ' . $task->title)
 
 @section('content')
+    @include('partials.user-message')
     <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
         <label><strong>{{$task->title}}</strong></label>
     </div>

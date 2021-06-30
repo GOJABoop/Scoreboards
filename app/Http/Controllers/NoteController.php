@@ -22,7 +22,8 @@ class NoteController extends Controller
     public function store(StoreNote $request,Book $book){
         $request->merge(['book_id' => $book->id]);
         Note::create($request->all());
-        return redirect()->route('books.show',compact('book'));
+        return redirect()->route('books.show',compact('book'))
+            ->with(['message' => 'Successfully stored note!']);
     }
 
     public function show(Note $note){
@@ -37,12 +38,14 @@ class NoteController extends Controller
     public function update(UpdateNote $request, Note $note){
         $note->update($request->all());
         $book = Note::find($note->id)->book;
-        return redirect()->route('books.show',compact('book'));
+        return redirect()->route('books.show',compact('book'))
+            ->with(['message' => 'Successfully updated note!']);
     }
 
     public function destroy(Note $note){
         $book = Note::find($note->id)->book;
         $note->delete();
-        return redirect()->route('books.show',compact('book'));
+        return redirect()->route('books.show',compact('book'))
+            ->with(['message' => 'Successfully deleted note!']);
     }
 }

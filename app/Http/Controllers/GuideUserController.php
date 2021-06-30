@@ -22,13 +22,15 @@ class GuideUserController extends Controller{
     public function store(Request $request){
         $user = User::find(Auth::id());
         $user->guides()->attach($request->guide_id);
-        return redirect()->route('guide_users.index');//->with(['message' => 'Guide added']);
+        return redirect()->route('guide_users.index')
+            ->with(['message' => 'New guide has been followed!']);
     }
 
     public function destroy(Guide $guide){
         $user = User::find(Auth::id());
         $user->guides()->detach($guide->id);
-        return redirect()->route('guide_users.index');
+        return redirect()->route('guide_users.index')
+            ->with(['message' => 'Guide has been unfollowed!']);
     }
 
     public function showAll(){
