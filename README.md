@@ -1,3 +1,11 @@
+## Proyecto: Scoreboards
+## Objetivo del proyecto
+
+En términos generales el proyecto está pensado como una herramienta para estudiantes donde en un solo lugar puedan tener registro de deberes, además de libros que se encuentren leyendo y sobre estas lecturas realizar notas que permitan recordar puntualidades sobre la lectura e intentar tener un estudio más eficaz encontrando en un sitio todos los apuntes, de manera complementaria una herramienta de creación y seguimiento de guías de estudio publicadas entre usuarios que permita a otros usuarios tener alguna referencia en distintos temas y al mismo tiempo compartir material de interés con un simple sistema de archivos, todo esto para servir de punto de partida para cualquier usuario registrado en algun tema de su interés o ayudar a otros con una publicación y/o material complementario.
+
+## Integrantes
+Alberto García
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
