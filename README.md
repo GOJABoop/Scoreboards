@@ -7,7 +7,7 @@ En términos generales el proyecto está pensado como una herramienta para estud
 Alberto García
 
 ## Sobre dependabot[bot]
-Github me alertó sobre una vulnerabilidad y mostró una solicitud  de pull request que solucionaría la vulnerabilidad, al hacer merge se agregó como contribuidor. Tambien cabe recalcar que al querer relizar un push desde mi repositorio local mi pide que realice un pull antes para poder realizar el push a este repositorio en GitHub (dos veces he hecho esto, desde que realice el merge), dezconozco si sea un problema y si hay manera de solucionarlo. Hago este comentario solo para informar. Gracias.
+Github me alertó sobre una vulnerabilidad y mostró una solicitud  de pull request que solucionaría la vulnerabilidad, al hacer merge se agregó como contribuidor. Tambien cabe recalcar que al querer relizar un push desde mi repositorio local mi pide que realice un pull antes para poder realizar el push a este repositorio en GitHub (dos veces he hecho esto, desde que realicé el merge), dezconozco si sea un problema y si hay manera de solucionarlo. Hago este comentario solo para informar. Gracias.
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
